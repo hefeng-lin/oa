@@ -13,7 +13,6 @@ def ahash(path):
     # 1. convert current image to gray-scale image
     image = cv2.imread(path)
     image = cv2.resize(image, (16, 16), interpolation=cv2.INTER_CUBIC)
-    # 将图片转化为灰度图
     image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 
     # 2. compute average of pixel values
@@ -42,10 +41,8 @@ def cal_hamming_dist(hash1, hash2):
     :return:
     '''
     hamming_dist = 0
-    # hash长度不同返回-1,此时不能比较
     if len(hash1) != len(hash2):
         return -1
-    # 如果hash长度相同遍历长度
     for i in range(len(hash1)):
         if hash1[i] != hash2[i]:
             hamming_dist += 1
